@@ -324,7 +324,7 @@ For product description, see :ref:`DISDRODB L2E Product <disdrodb_l2e>`.
       minimum_rain_rate: 0.1           # Minimum rain rate (mm/h)
 
       # Spectrum filtering
-      fall_velocity_model: Beard1976   # Fall velocity model
+      fall_velocity_model: Beard1976   # Beard1976 or Lhermitte1988 (also other registered models)
       minimum_diameter: 0.0            # Diameter filter (mm)
       maximum_diameter: 10.0
       minimum_velocity: 0.0            # Velocity filter (m/s)
@@ -388,7 +388,7 @@ For product description, see :ref:`DISDRODB L2M Product <disdrodb_l2m>`.
       folder_partitioning: year/month
 
     product_options:
-      fall_velocity_model: Beard1976   # Fall velocity model
+      fall_velocity_model: Beard1976   # Beard1976 or Lhermitte1988 (also other registered models)
       diameter_min: 0.1                # Diameter range for model fitting (mm)
       diameter_max: 8.0
       diameter_spacing: 0.1            # Grid spacing for numerical integration (mm)

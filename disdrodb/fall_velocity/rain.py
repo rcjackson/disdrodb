@@ -448,7 +448,7 @@ def get_rain_fall_velocity_model(model):
     ----------
     model : str
         The model to use for calculating the rain drop fall velocity. Available models are:
-       'Atlas1973', 'Beard1976', 'Brandes2002', 'Uplinger1981', 'VanDijk2002'.
+       'Atlas1973', 'Beard1976', 'Lhermitte1988', 'Brandes2002', 'Uplinger1981', 'VanDijk2002'.
 
     Returns
     -------
@@ -474,9 +474,11 @@ def get_rain_fall_velocity(diameter, model, ds_env=None):
         The diameter of the raindrops in millimeters.
     model : str
         The model to use for calculating the raindrop fall velocity. Must be one of the following:
-        'Atlas1973', 'Beard1976', 'Brandes2002', 'Uplinger1981', 'VanDijk2002'.
+        'Atlas1973', 'Beard1976', 'Lhermitte1988', 'Brandes2002', 'Uplinger1981', 'VanDijk2002'.
     ds_env : xarray.Dataset, optional
-        Only required if model is 'Beard1976'.
+        Environmental dataset used for altitude and air-density corrections.
+        The ``"Beard1976"`` model additionally requires thermodynamic
+        variables from this dataset.
         A dataset containing the following environmental variables:
 
         - 'altitude' (m)
@@ -558,12 +560,15 @@ def get_rain_fall_velocity_from_ds(ds, ds_env=None, model="Beard1976", diameter=
     ----------
     ds : xarray.Dataset
         DISDRODB dataset with the ``'diameter_bin_center'`` coordinate.
-        The ``'altitude'`` and ``'latitude'`` coordinates are used if ``model='Beard1976'``.
+        The ``'altitude'`` and ``'latitude'`` coordinates are used for
+        environmental corrections.
     model : str, optional
         Model to compute rain drop fall velocity.
         The default model is ``"Beard1976"``.
     ds_env : xarray.Dataset, optional
-        Only required if model is 'Beard1976'.
+        Environmental dataset used for altitude and air-density corrections.
+        The ``"Beard1976"`` model additionally requires thermodynamic
+        variables from this dataset.
         A dataset containing the following environmental variables:
 
         - 'temperature' : Temperature in degrees Kelvin (K).

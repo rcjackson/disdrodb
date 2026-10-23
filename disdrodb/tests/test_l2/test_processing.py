@@ -481,6 +481,7 @@ class TestGenerateL2Empirical:
         ds = create_template_dataset()
         ds_out = generate_l2e(ds, fall_velocity_model=model)
         assert "fall_velocity" in ds_out
+        assert ds_out["fall_velocity"].attrs["model"] == model
         assert np.all(ds_out["fall_velocity"] >= 0)
 
     def test_diameter_filtering(self):

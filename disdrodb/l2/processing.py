@@ -495,7 +495,10 @@ def generate_l2e(
         If None, a default environment dataset will be loaded.
     fall_velocity_model : str, optional
         Model name to estimate drop fall velocity.
-        The default method is ``"Beard1976"``.
+        The selected model is used for the L2E diameter/velocity QC mask and
+        for the theoretical ``fall_velocity`` variable. Available models
+        include ``"Beard1976"`` and ``"Lhermitte1988"``. The default is
+        ``"Beard1976"``.
     minimum_diameter : float, optional
         Minimum diameter for filtering. The default value is 0 mm.
     maximum_diameter : float, optional
